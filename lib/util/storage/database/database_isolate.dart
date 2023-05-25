@@ -31,10 +31,12 @@ class DatabaseIsolate {
   late SendPort sendPort;
   late ReceivePort receivePort;
   bool initialized = false;
+  bool loading = false;
 
   factory DatabaseIsolate.instance() => _databaseIsolate;
 
   Future<void> init() async {
+    loading = true;
     if (initialized == false) {
       _databaseIsolate.receivePort = ReceivePort();
       _databaseIsolate.isolate = await Isolate.spawn(
@@ -43,6 +45,7 @@ class DatabaseIsolate {
           await _databaseIsolate.receivePort.first as SendPort;
 
       initialized = true;
+      loading = false;
     }
   }
 

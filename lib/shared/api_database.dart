@@ -31,7 +31,14 @@ class ApiDatabase {
 
   Future<dynamic> _processIsolate(
       {required String method, Map<String, dynamic>? params}) async {
-    if (!databaseIsolate.initialized) await databaseIsolate.init();
+    if (!databaseIsolate.initialized && !databaseIsolate.loading) {
+      await databaseIsolate.init();
+    } else {
+      do {
+        await Future.delayed(Duration(milliseconds: 1));
+      } while (databaseIsolate.loading);
+      print("databaseIsolate.loading ${databaseIsolate.loading}");
+    }
     final ReceivePort response = ReceivePort();
     databaseIsolate.send(
         method: method, params: params ?? {}, port: response.sendPort);
