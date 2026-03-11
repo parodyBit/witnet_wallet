@@ -9,7 +9,7 @@
     <key>provisioningProfiles</key>
     <dict>
         <key>io.witnet.myWitWallet</key>
-        <string>match AppStore io.witnet.myWitWallet 1723551508</string>
+        <string>match AppStore io.witnet.myWitWallet</string>
     </dict>
     <key>signingCertificate</key>
     <string>iOS Distribution</string>
