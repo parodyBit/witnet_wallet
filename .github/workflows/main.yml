@@ -113,7 +113,7 @@ jobs:
 
   MacOs:
     environment: Macos
-    runs-on: macos-15-intel
+    runs-on: macos-26-intel
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -310,7 +310,7 @@ jobs:
           path: ./myWitWallet.apk
 
   IOS:
-    runs-on: macos-15-intel
+    runs-on: macos-26-intel
     environment: IOS
     steps:
       - name: Checkout Repo
