@@ -395,7 +395,8 @@ jobs:
           path: ./build/ios/ipa/myWitWallet.ipa
 
   Release:
-    needs: [Windows, Linux, MacOs, Android, IOS]
+    # TODO: Reintroduce "MacOS" when fixed
+    needs: [Windows, Linux, Android, IOS]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -418,10 +419,10 @@ jobs:
           cd release
           mv windows/* .
           mv linux/* .
-          mv macos/* .
           mv android/* .
           mv ios/* .
-          rm -rf windows linux macos android ios
+          #mv macos/* .
+          rm -rf windows linux android ios #macos
 
       - name: Publish Github Release
         uses: ncipollo/release-action@v1
