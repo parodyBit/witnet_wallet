@@ -1,0 +1,1 @@
+Adds support for adding metadata payloads to your transactions; which enables wrapping and unwrapping of WIT into ERC20 form.
